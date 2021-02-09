@@ -23,14 +23,32 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    'style-loader', {
+                    'style-loader',
+                    {
                         loader: 'css-loader', options: {
                             modules: {
                                 localIdentName: '[path][name]__[local]--[hash:base64:5]',
                             }
                         }
                     },
+                    {
+                        loader: 'postcss-loader', options: {
+                            plugins: function() {
+                                return [
+                                    require('precss'),
+                                    require('autoprefixer')
+                                ];
+                            }
+                        }
+                    },
                     'sass-loader'
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
                 ]
             }
         ]

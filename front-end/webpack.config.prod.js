@@ -22,7 +22,24 @@ module.exports = {
                             },
                         }
                     },
+                    {
+                        loader: 'postcss-loader', options: {
+                            plugins: function() {
+                                return [
+                                    require('precss'),
+                                    require('autoprefixer')
+                                ];
+                            }
+                        }
+                    },
                     'sass-loader'
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
                 ]
             }
         ]
