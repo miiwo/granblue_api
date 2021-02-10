@@ -12,8 +12,13 @@ router.get('/all', async (req, res) => {
     res.send(weapons);
 });
 
-router.get('/:id', function(req, res) {
-    res.send('The id you specified is: ' + req.params.id);
+router.get('/:id', async (req, res) => {
+    console.log('recieved: ' + req.params.id);
+
+    const query = req.params.id.toLowerCase();
+    const weapons = await pg`select * from weapons where lower(name) like ${ '%' + query + '%' }`
+
+    res.send(weapons);
 });
 
 module.exports = router;

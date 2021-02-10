@@ -40,12 +40,13 @@ class WeaponsPage extends Component {
 
     onSearchClick(e) {
         e.preventDefault();
-        console.log(e.target.value);
-        fetch('/weapons/all').then(res => res.json())
+        console.log(e.target[0].value); // The first element in the form is the input I'm looking for
+        fetch('/weapons/' + e.target[0].value).then(res => res.json())
             .then(weapons => this.setState({ weapons }))
             .catch(err => console.log('An error has occured with fetching the backend data'));
     }
 
+    // Notes: I needed to set height of parent to an actual value for it to work. 0 does not : (
     render () {
         return (
             <>
