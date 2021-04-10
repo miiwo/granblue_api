@@ -14,7 +14,24 @@ var weapons = require('./routes/weapons.js');
 
 // GET MAIN PAGE
 app.use('/', express.static('./dist'));
-app.use('/weapons', weapons);
+
+// Authorization
+function auth_request(req, res, next) {
+    console.log("Checking Authorization...");
+
+    if (req.get('Authorization') === process.env.API_KEY) {
+        console.log("Authorization granted");
+        next();
+    } else {
+        console.log('Rejecting request...');
+        res.status(403).json({error: 'Request denied. Please put proper Authorization.'});
+    }
+};
+
+// Make a generateAuthTokenFunction sometime
+
+// Routes
+app.use('/weapons', auth_request, weapons);
 
 app.get('*', function(req, res) {
     res.send('Sorry this is an invalid URL.');
