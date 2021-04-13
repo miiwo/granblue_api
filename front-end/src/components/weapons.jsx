@@ -22,15 +22,16 @@ class WeaponsPage extends Component {
             {name: 'Flower Parasol'},
             {name: 'Kappa Shoot'},
             {name: 'Trappa Shoot'},
+            {name: 'Doki Doki Shoot'},
             {name: 'Kappa Shoot'},
-            {name: 'Kappa Shoot'},
-            {name: 'Fappa Shoot'},
-            {name: 'Kappa Shoot'},
+            {name: 'Frappa Shoot'},
+            {name: 'Slappa Shoot'},
             {name: 'Kappa Shoot'},
             {name: 'Kappa Shoot'},
             {name: 'Kappa Shoot'},
             {name: 'Kappa Shoot'},
         ]};
+        
         this.onSearchClick=this.onSearchClick.bind(this);
     }
 
