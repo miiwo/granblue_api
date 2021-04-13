@@ -1,7 +1,7 @@
-Uses scss for styling
-uses webpack
-uses babel (for transpiling between the different esx versions)
-htmlwebpackplugin generates an html file and hooks it up with our index.js file
-htmlloader is used to export html as a string to be read by webpack
+# Granblue API
+Project to house the API. Have a backend that serves the data as a RESTful API, and have a small demonstration of it in use with a quick prototyped front-end designed in React.
 
-run `yarn build` to get a production build made into the folder: `dist/`. Copy that over to my backend server so it gets served. If I want the backend to run with the frontend, run from the backend copy with the `dist` folder copied over.
+
+## Notes For Self
+run `yarn build` to get a production build made into the folder: `dist/`. 
+Copy that over to backend folder so the front-end and back-end can be displayed together.
