@@ -7,6 +7,7 @@ var cors = require('cors');
 var app = express();
 dotenv.config();
 app.use(cors());
+app.set('query parser', 'simple');
 
 // Routers
 var weapons = require('./routes/weapons.js');
@@ -24,7 +25,7 @@ function auth_request(req, res, next) {
         next();
     } else {
         console.log('Rejecting request...');
-        res.status(403).json({error: 'Request denied. Please put proper Authorization.'});
+        res.status(401).json({error: 'Request denied. Please put proper authorization.'});
     }
 };
 
@@ -33,8 +34,9 @@ function auth_request(req, res, next) {
 // Routes
 app.use('/weapons', auth_request, weapons);
 
+// 404 Page
 app.get('*', function(req, res) {
-    res.send('Sorry this is an invalid URL.');
+    res.status(404).json('Sorry this is an invalid URL.');
 });
 
 // PORT to listen to
