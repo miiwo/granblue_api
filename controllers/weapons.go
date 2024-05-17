@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"github.com/gin-gonic/gin"
 	"miiwo/skyfarer/backend"
+	//"slices"
 )
 
 type weaponJSONMap struct {
@@ -15,15 +16,24 @@ type weaponJSONMap struct {
 
 func FetchWeapons(gctx *gin.Context) {
 	// Query Parameters
-	
-	wepname := gctx.Query("name")
-	//queryparams := gctx.Request.URL.Query()
+	queryparams := gctx.Request.URL.Query()
+	//allowedQueryParams := []string{"element", "weapontype"}
 
 	// Grab from backend
 	var backendresults []backend.WeaponMemory
-	if wepname != "" {
+	if queryparams.Get("name") != "" {
 		// If name is specified, only search by it
-		backendresults = backend.RetrieveWeaponsByPartialName(wepname)
+		backendresults = backend.RetrieveWeaponsByPartialOrFullName(queryparams.Get("name"))
+
+	} else if len(queryparams) >= 1 {
+		// Parse through the rest of the parameters
+		// Make an else statement for if an unused query parameter is used
+		tempfilters := make(map[string]string)
+		for key, value := range queryparams {
+			tempfilters[key] = value[0] // Grabs the first value out of the query parameters if there is duplicates
+		}
+		backendresults = backend.RetrieveWeaponsWithConditions(tempfilters)
+
 	} else {
 		// If no other conditions, return all weapons
 		backendresults = backend.RetrieveWeapons()

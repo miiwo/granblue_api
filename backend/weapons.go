@@ -16,10 +16,14 @@ type WeaponMemory struct {
 	WeaponType 	string
 }
 
+
+
 var weapons = []WeaponMemory {
 	{ID: "1", Name: "Bahamut Blade", Element: "Dark", WeaponType: "katana"},
 	{ID: "2", Name: "Knight of Ice", Element: "Water", WeaponType: "dagger"},
 	{ID: "3", Name: "Phoenix's Torch", Element: "Fire", WeaponType: "staff"},
+	{ID: "4", Name: "Phoenix's Claw", Element: "Fire", WeaponType: "melee"},
+	{ID: "5", Name: "Unsigned Kaneshige", Element: "Light", WeaponType: "katana"},
 }
 
 // Retrieve at max 10 from the database
@@ -36,7 +40,7 @@ func RetrieveWeaponsMax(max int) []WeaponMemory {
 	}
 }
 
-func RetrieveWeaponsByPartialName(name string) []WeaponMemory {
+func RetrieveWeaponsByPartialOrFullName(name string) []WeaponMemory {
 	results := make([]WeaponMemory, 0)
 
 	// Search backend
@@ -48,6 +52,42 @@ func RetrieveWeaponsByPartialName(name string) []WeaponMemory {
 
 
 	return results
+}
+
+func RetrieveWeaponsWithConditions(filters map[string]string) []WeaponMemory {
+	results := make([]WeaponMemory, 0)
+
+	for i := range weapons {
+		shouldAdd := false
+		for key, value := range filters {
+			fieldVal := grabWeaponMemoryKeyValue(weapons[i], key) 
+			if strings.ToLower(fieldVal) == value {
+				shouldAdd = true
+			} else {
+				shouldAdd = false
+				break
+			}
+		}
+
+		if shouldAdd {
+			results = append(results, weapons[i])
+		}
+		
+	}
+
+	return results
+}
+
+func grabWeaponMemoryKeyValue(item WeaponMemory, key string) string {
+	if key == "name" {
+		return item.Name
+	} else if key == "element" {
+		return item.Element
+	} else if key == "weptype" {
+		return item.WeaponType
+	} else {
+		return ""
+	}
 }
 
 /*type Weapon struct {
