@@ -6,12 +6,14 @@ import (
 	"miiwo/skyfarer/handler"
 	"miiwo/skyfarer/auth"
 	"github.com/joho/godotenv"
+	"miiwo/skyfarer/backend/models"
 )
 
 func main() {
 	// INIT
 	router := gin.Default()
 	godotenv.Load(".env")
+	models.ConnectToMariaDB()
 
 	// ROUTES
 	v1 := router.Group("v1", auth.ValidateAPIKey)
