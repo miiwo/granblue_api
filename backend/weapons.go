@@ -7,6 +7,7 @@ package backend
 )*/
 import (
 	"strings"
+	"os"
 )
 
 type WeaponMemory struct {
@@ -15,8 +16,6 @@ type WeaponMemory struct {
 	Element		string
 	WeaponType 	string
 }
-
-
 
 var weapons = []WeaponMemory {
 	{ID: "1", Name: "Bahamut Blade", Element: "Dark", WeaponType: "katana"},
@@ -43,9 +42,9 @@ func RetrieveWeaponsMax(max int) []WeaponMemory {
 func RetrieveWeaponsByPartialOrFullName(name string) []WeaponMemory {
 	results := make([]WeaponMemory, 0)
 
-	// Search backend
+	// Search database
 	for i := range weapons {
-		if strings.Contains(strings.ToLower(weapons[i].Name), name) {
+		if strings.Contains(strings.ToLower(weapons[i].Name), strings.ToLower(name)) {
 			results = append(results, weapons[i])
 		}
 	}
@@ -58,12 +57,10 @@ func RetrieveWeaponsWithConditions(filters map[string]string) []WeaponMemory {
 	results := make([]WeaponMemory, 0)
 
 	for i := range weapons {
-		shouldAdd := false
+		shouldAdd := true
 		for key, value := range filters {
 			fieldVal := grabWeaponMemoryKeyValue(weapons[i], key) 
-			if strings.ToLower(fieldVal) == value {
-				shouldAdd = true
-			} else {
+			if strings.ToLower(fieldVal) != value {
 				shouldAdd = false
 				break
 			}
@@ -75,7 +72,30 @@ func RetrieveWeaponsWithConditions(filters map[string]string) []WeaponMemory {
 		
 	}
 
+	
 	return results
+}
+
+func ValidateAPIKey(key string) bool {
+	return checkKeys(key)
+}
+
+func checkKeys(rawKey string) bool {
+	isValid := true
+	apiKey := os.Getenv("API_KEY")
+
+	if len(apiKey) != len(rawKey) {
+		return false
+	}
+
+	// Goes through all the characters to try and avoid timing attack
+	for i := range apiKey {
+		if rawKey[i] != apiKey[i] {
+			isValid = false
+		}
+	}
+
+	return isValid
 }
 
 func grabWeaponMemoryKeyValue(item WeaponMemory, key string) string {

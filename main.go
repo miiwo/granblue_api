@@ -1,38 +1,28 @@
 package main
 
 import (
+	"net/http"
 	"github.com/gin-gonic/gin"
-	"miiwo/skyfarer/controllers"
+	"miiwo/skyfarer/handler"
+	"miiwo/skyfarer/auth"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	// INIT
 	router := gin.Default()
-
-	// AUTH
-	/*authorized := router.Group("/weapons", gin.BasicAuth(gin.Accounts{
-		"foo": "bar",
-		"user2": "orchid",
-	}))*/
+	godotenv.Load(".env")
 
 	// ROUTES
-	router.GET("/weapons", controllers.FetchWeapons)
-	//authorized.Use(AuthRequired) {
-	//	authorized.GET("/auth/weapons", getWeapons)
-	//}
-	
+	v1 := router.Group("v1", auth.ValidateAPIKey)
+	v1.GET("/weapons", handler.FetchWeapons)
 
+	router.GET("/", handler.FetchWeapons)
+	router.GET("/auth/key", func (gctx *gin.Context) {
+		gctx.IndentedJSON(http.StatusOK, map[string]string{"apiKey": auth.GenerateAPIKey()})
+	})
+
+	// RUN
 	router.Run("localhost:8084")
 }
 
-/*func AuthRequired (gctx *gin.Context) {
-	authorization := gctx.GetHeader("Authorization")
-	gctx.Next()
-	/*if strings.HasPrefix(authorization, "Bearer ") {
-		splits := strings.Split(authorization, " ")
-		if len(splits != 2) {
-			// say it is an invalid header for not having a certain number of auth fields. This one should only check for Bearer token
-		}
-		claims, err := nil
-		gctx.Set(ClaimsContextVar, claims)
-	}
-}*/

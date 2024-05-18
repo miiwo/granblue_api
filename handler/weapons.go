@@ -1,4 +1,4 @@
-package controllers
+package handler
 
 import (
 	"net/http"
@@ -17,7 +17,6 @@ type weaponJSONMap struct {
 func FetchWeapons(gctx *gin.Context) {
 	// Query Parameters
 	queryparams := gctx.Request.URL.Query()
-	//allowedQueryParams := []string{"element", "weapontype"}
 
 	// Grab from backend
 	var backendresults []backend.WeaponMemory
