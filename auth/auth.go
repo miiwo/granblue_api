@@ -20,11 +20,11 @@ func ValidateAPIKey(gctx *gin.Context) {
 	key := parseBearerToken(gctx.GetHeader("Authorization"))
 
 	if key == "" {
-		gctx.AbortWithStatus(http.StatusUnauthorized)
+		gctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Needs an API Key"})
 	} else if backend.ValidateAPIKey(key) {
 		gctx.Next()
 	} else {
-		gctx.AbortWithStatus(http.StatusUnauthorized)
+		gctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Invalid API Key"})
 	}
 }
 
