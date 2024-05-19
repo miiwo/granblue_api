@@ -6,7 +6,7 @@ import (
 )
 
 type WeaponMemory struct {
-	ID			string
+	ID			string `json:"-"`
 	Name		string
 	Element		string
 	WeaponType 	string

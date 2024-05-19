@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"github.com/gin-gonic/gin"
 	"miiwo/skyfarer/backend"
-	//"slices"
+	"miiwo/skyfarer/backend/models"
 )
 
 type weaponJSONMap struct {
@@ -12,6 +12,21 @@ type weaponJSONMap struct {
 	Name		string	`json:"name"`
 	Element		string	`json:"element"`
 	WeaponType 	string	`json:"type"`
+}
+
+func FetchWeaponsFromDB(gctx *gin.Context) {
+	queryparams := gctx.Request.URL.Query()
+	tempfilters := make(map[string]interface{})
+	for key, value := range queryparams {
+		tempfilters[key] = value[0] // Grabs the first value out of the query parameters if there is duplicates, make it so that there can only be one kind in later iteration
+	}
+	results, err := models.GetWeaponsByQuery(tempfilters)
+
+	if (err != nil) {
+		gctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "Server encountered an error"})
+	} else {
+		gctx.IndentedJSON(http.StatusOK, results)
+	}
 }
 
 func FetchWeapons(gctx *gin.Context) {

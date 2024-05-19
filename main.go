@@ -17,11 +17,11 @@ func main() {
 
 	// ROUTES
 	v1 := router.Group("v1", auth.ValidateAPIKey)
-	v1.GET("/weapons", handler.FetchWeapons)
+	v1.GET("/weapons", handler.FetchWeaponsFromDB)
 
 	router.GET("/", handler.FetchWeapons)
 	router.GET("/auth/key", func (gctx *gin.Context) {
-		gctx.IndentedJSON(http.StatusOK, map[string]string{"apiKey": auth.GenerateAPIKey()})
+		gctx.IndentedJSON(http.StatusOK, gin.H{"apiKey": auth.GenerateAPIKey()})
 	})
 
 	// RUN
