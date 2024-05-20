@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 	"github.com/gin-gonic/gin"
 	"miiwo/skyfarer/handler"
 	"miiwo/skyfarer/middleware"
@@ -25,6 +26,6 @@ func main() {
 	})
 
 	// RUN
-	router.Run("192.168.68.88:8084")
+	router.Run(os.Getenv("BASE_URL"))
 }
 
