@@ -15,7 +15,7 @@ Clone the repository using this URL: `https://github.com/miiwo/granblue_api.git`
 
 #### 2. Setup the Database 
 
-Ensure you have a MySQL-flavored DB server installed
+Ensure you have a MySQL-flavored DB server installed.
 
 [Setup the database by running: `setup.sql` in the DB server]: #
 
@@ -23,8 +23,8 @@ If you are running the database server on a different host machine than this app
 
 #### 3. Setup the Application
 
-Make sure you have `go` (version 1.22.3+) installed on your machine. *(Check by typing `go version` into the Command Terminal)*
-Run `go build` in the Command Terminal to grab all the dependencies and to build the app.
+Make sure you have `go` (version 1.22.3+) installed on your machine. *(Check by typing `go version` into the Command Terminal)*  
+Run `go build` in the Command Terminal to grab all the dependencies and to build the app.  
 Make a `.env` with the following variables. See `.env.sample` for assistance.
 
 | Key       | Notes                                                                                 |
@@ -41,13 +41,13 @@ Make a `.env` with the following variables. See `.env.sample` for assistance.
 ## Usage
 To self-host the app, run `go run .` to start the application.
 
-This API is also publically hosted at: `Please wait for domain acquiral`
+This API is also publically hosted at: `Please wait for domain acquiral`  
 Please fill in the Authorization with a Bearer Token containing the <*API_KEY*> and use the following endpoints[ here](#endpoints)!
 
-Connect to the API using Postman on the port and <*API_KEY*> you set in the `.env` file.
+Connect to the API using Postman on the port and <*API_KEY*> you set in the `.env` file.  
 You can connect via Postman at the endpoint: `http://<BASEURL>/v1/weapons`
 
-Or use cURL on the Command Terminal:
+Or use cURL on the Command Terminal:  
 Ex. `curl -H "Authorization: Bearer <API_KEY>" http://<BASEURL>/v1/weapons?name=phoenix `
 
 ## Endpoints
@@ -62,7 +62,7 @@ Ex. `curl -H "Authorization: Bearer <API_KEY>" http://<BASEURL>/v1/weapons?name=
 This endpoint will grab a list of weapons from the database. Returns at max 20 entries.
 
 ##### Request
-`GET http://<BASEURL>/v1/weapons`
+`GET http://<BASEURL>/v1/weapons`  
 Fields to query by:
 - name
 - element
