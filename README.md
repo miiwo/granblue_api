@@ -41,7 +41,8 @@ For usage, go [here](#usage).
 ## Usage
 To self-host the app, run `go run .` to start the application.
 
-This API is also publically hosted at: `Please wait for domain acquiral`  
+This API is also publically hosted at: `skyfaring-domain.xyz`  
+*I try to keep it up during 9am-5pm EST hours, but it may be down due to cost concerns :(*  
 Please fill in the Authorization with a Bearer Token containing the <*API_KEY*> and use the following endpoints[ here](#endpoints)!
 
 Connect to the API using Postman on the port and <*API_KEY*> you set in the `.env` file.  
@@ -54,7 +55,8 @@ Ex. `curl -H "Authorization: Bearer <API_KEY>" http://<BASEURL>/v1/weapons?name=
 
 | HTTP Verbs | Endpoints | Action |
 | --- | --- | --- |
-| GET | /v1/weapons | To get information on a weapon |
+| GET | /v1/weapons | To get information on a weapon                        |
+| GET | /ping       | Gives you pong back without needing to authenticate   |
 
 [| GET | /v1/characters | To get information on a character |]: #
 
