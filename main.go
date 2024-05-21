@@ -1,13 +1,13 @@
 package main
 
 import (
-	"net/http"
-	"os"
-	"github.com/gin-gonic/gin"
+	"miiwo/skyfarer/backend/models"
 	"miiwo/skyfarer/handler"
 	"miiwo/skyfarer/middleware"
+	"os"
+
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"miiwo/skyfarer/backend/models"
 )
 
 func main() {
@@ -20,12 +20,11 @@ func main() {
 	v1 := router.Group("v1", middleware.CorsConfig, middleware.ValidateAPIKey)
 	v1.GET("/weapons", handler.FetchWeaponsFromDB)
 
-	router.GET("/", handler.FetchWeapons)
-	router.GET("/auth/key", func (gctx *gin.Context) {
-		gctx.IndentedJSON(http.StatusOK, gin.H{"apiKey": middleware.GenerateAPIKey()})
+	// Just to show routes are working without authentication
+	router.GET("/ping", func(gctx *gin.Context) {
+		gctx.IndentedJSON(200, gin.H{"message": "pong"})
 	})
 
 	// RUN
 	router.Run(os.Getenv("BASE_URL"))
 }
-

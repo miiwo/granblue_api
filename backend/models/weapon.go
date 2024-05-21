@@ -31,7 +31,7 @@ func GetWeaponsByQuery(filters map[string]interface{}) ([]Weapon, error) {
 		return weapons, err
 	}
 
-	// Do partial match on name
+	// Do partial match on name if present
 	if filters["name"] != nil {
 		dbctx = dbctx.Where("name LIKE ?", "%"+filters["name"].(string)+"%")
 		delete(filters, "name")

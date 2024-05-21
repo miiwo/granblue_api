@@ -1,18 +1,18 @@
 package backend
 
 import (
-	"strings"
 	"os"
+	"strings"
 )
 
 type WeaponMemory struct {
-	ID			string `json:"-"`
-	Name		string
-	Element		string
-	WeaponType 	string
+	ID         string `json:"-"`
+	Name       string
+	Element    string
+	WeaponType string
 }
 
-var weapons = []WeaponMemory {
+var weapons = []WeaponMemory{
 	{ID: "1", Name: "Bahamut Blade", Element: "Dark", WeaponType: "katana"},
 	{ID: "2", Name: "Knight of Ice", Element: "Water", WeaponType: "dagger"},
 	{ID: "3", Name: "Phoenix's Torch", Element: "Fire", WeaponType: "staff"},
@@ -44,7 +44,6 @@ func RetrieveWeaponsByPartialOrFullName(name string) []WeaponMemory {
 		}
 	}
 
-
 	return results
 }
 
@@ -54,7 +53,7 @@ func RetrieveWeaponsWithConditions(filters map[string]string) []WeaponMemory {
 	for i := range weapons {
 		shouldAdd := true
 		for key, value := range filters {
-			fieldVal := grabWeaponMemoryKeyValue(weapons[i], key) 
+			fieldVal := grabWeaponMemoryKeyValue(weapons[i], key)
 			if strings.ToLower(fieldVal) != value {
 				shouldAdd = false
 				break
@@ -64,10 +63,9 @@ func RetrieveWeaponsWithConditions(filters map[string]string) []WeaponMemory {
 		if shouldAdd {
 			results = append(results, weapons[i])
 		}
-		
+
 	}
 
-	
 	return results
 }
 
