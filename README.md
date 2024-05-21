@@ -11,15 +11,15 @@ For usage, go [here](#usage).
 
 ## Setup on your own machine
 #### 1. Grab the source code
-Clone the repository using this URL: `https://github.com/miiwo/granblue_api.git`
+- Clone the repository using this URL: `https://github.com/miiwo/granblue_api.git`
 
 #### 2. Setup the Database 
 
-Ensure you have a MySQL-flavored DB server installed.
+- Ensure you have a MySQL-flavored DB server installed.
 
 [Setup the database by running: `setup.sql` in the DB server]: #
 
-If you are running the database server on a different host machine than this app, please look into allowing remote access to the DB server.
+- If you are running the database server on a different host machine than this app, please look into allowing remote access to the DB server.
 
 #### 3. Setup the Application
 
