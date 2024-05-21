@@ -23,9 +23,9 @@ If you are running the database server on a different host machine than this app
 
 #### 3. Setup the Application
 
-Make sure you have `go` (version 1.22.3+) installed on your machine. *(Check by typing `go version` into the Command Terminal)*  
-Run `go build` in the Command Terminal to grab all the dependencies and to build the app.  
-Make a `.env` with the following variables. See `.env.sample` for assistance.
+- Make sure you have `go` (version 1.22.3+) installed on your machine. *(Check by typing `go version` into the Command Terminal)*  
+- Run `go build` in the Command Terminal to grab all the dependencies and to build the app.  
+- Make a `.env` with the following variables. See `.env.sample` for assistance.
 
 | Key       | Notes                                                                                 |
 | ---       | ---                                                                                   |
