@@ -1,5 +1,6 @@
 # Skyfarer REST API App
 ![](https://img.shields.io/badge/public_API_\@skyfaring--domain\.xyz-offline!-D24939)
+
 ![-insert picture here-](SkyfarerAPIBanner.png)
 
 ## Introduction
@@ -10,7 +11,7 @@ For usage, go [here](#usage).
 ## Features
 - Authentication via an API key
 - Find GBF weapons with filters based on weapon skills to help with grid building
-- Publically accessable REST API that can be used by other developers without needing to source their own DB data.
+- Publically accessable REST API that can be used by other developers without needing to source their own DB data
 
 ## Setup on your own machine
 #### 1. Grab the source code
