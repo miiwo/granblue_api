@@ -45,12 +45,15 @@ For usage, go [here](#usage).
 ## Usage
 To self-host the app, run `go run .` to start the application.
 
+---
 This API is also publically hosted at: `skyfaring-domain.xyz`  
 | Is it Up? |
 | :-:       |
 | :x:       | 
 
 *(I try to keep it up during 9am-5pm EST hours, but it may be down due to cost concerns :( For access, please make an issue on the repository requesting access.)*  
+
+---
 
 Please fill in the Authorization with a Bearer Token containing the <*API_KEY*> and use the following endpoints[ here](#endpoints)!
 
