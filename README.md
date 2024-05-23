@@ -1,13 +1,16 @@
 # Skyfarer REST API App
-
+![](https://img.shields.io/badge/public_API_\@skyfaring--domain\.xyz-offline!-D24939)
 ![-insert picture here-](SkyfarerAPIBanner.png)
 
 ## Introduction
 This API grabs item info for the game "Granblue Fantasy" in a RESTful manner. This will allow for easier searching of certain properties on items and their magnitude. Planned usage to use this in conjecture with a website to search the collection of items. This app is written in Golang.
 
-This app features authentication via an API key.
-
 For usage, go [here](#usage).
+
+## Features
+- Authentication via an API key
+- Find GBF weapons with filters based on weapon skills to help with grid building
+- Publically accessable REST API that can be used by other developers without needing to source their own DB data.
 
 ## Setup on your own machine
 #### 1. Grab the source code
@@ -42,7 +45,12 @@ For usage, go [here](#usage).
 To self-host the app, run `go run .` to start the application.
 
 This API is also publically hosted at: `skyfaring-domain.xyz`  
-*I try to keep it up during 9am-5pm EST hours, but it may be down due to cost concerns :(*  
+| Is it Up? |
+| :-:       |
+| :x:       | 
+
+*(I try to keep it up during 9am-5pm EST hours, but it may be down due to cost concerns :( For access, please make an issue on the repository requesting access.)*  
+
 Please fill in the Authorization with a Bearer Token containing the <*API_KEY*> and use the following endpoints[ here](#endpoints)!
 
 Connect to the API using Postman on the port and <*API_KEY*> you set in the `.env` file.  
