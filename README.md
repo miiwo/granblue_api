@@ -51,7 +51,9 @@ This API is also publically hosted at: `skyfaring-domain.xyz`
 | :-:       |
 | :x:       | 
 
-*(I try to keep it up during 9am-5pm EST hours, but it may be down due to cost concerns :( For access, please make an issue on the repository requesting access.)*  
+> [!NOTE]
+> I try to keep it up during 9am-5pm EST hours, but it may be down due to cost concerns :(  
+> For access, please make an issue on the repository requesting access.  
 
 ---
 
