@@ -1,7 +1,7 @@
 # Skyfarer REST API App
 ![](https://img.shields.io/badge/public_API_\@skyfaring--domain\.xyz-offline!-D24939)
 
-![-insert picture here-](SkyfarerAPIBanner.png)
+![-banner picture here-](SkyfarerAPIBanner.png)
 
 ## Introduction
 This API grabs item info for the game "Granblue Fantasy" in a RESTful manner. This will allow for easier searching of certain properties on items and their magnitude. Planned usage to use this in conjecture with a website to search the collection of items. This app is written in Golang.
@@ -11,7 +11,7 @@ For usage, go [here](#usage).
 ## Features
 - Authentication via an API key
 - Find GBF weapons with filters based on weapon skills to help with grid building
-- Publically accessable REST API that can be used by other developers without needing to source their own DB data
+- Publically accessable REST API that can be used by other developers without needing to source their own data
 
 ## Setup on your own machine
 #### 1. Grab the source code
@@ -54,7 +54,7 @@ Or use cURL on the Command Terminal:
 Ex. `curl -H "Authorization: Bearer <API_KEY>" http://skyfaring-domain.xyz/v1/weapons?name=phoenix `
 
 > [!NOTE]
-> I try to keep it up during 9am-5pm EST hours, but it may be down due to cost concerns :(  
+> I try to keep it up during 9am-5pm EST hours, but it may be down due to cloud hosting cost concerns :(  
 > For API Key access, please make an issue on the repository requesting access.  
 ---
 
@@ -107,10 +107,11 @@ Returns a list of weapons. If there are no skills associated with the weapon, th
 ```
 
 ## Technologies Used
-- [Golang]() | This is the programming language used to write the REST API app
-- [Gin]() | This is a Golang web application framework
-- [GORM]() | A framework that simplifies modelling the database schema within the development of the app
-- [MariaDB]() | This is a free open-source SQL database
+- [Golang]() | The programming language used to write the REST API app. Also known as Go
+- [Gin]() | A Golang web framework featuring high performance and productivity
+- [GORM]() | A ORM framework that simplifies modelling the database schema within the development of the app
+- [MariaDB]() | A free open-source SQL database
+- [Google Cloud Platform]() | A cloud provider used to publically host the REST API app. Specifically using Compute Engine which is not serverless
 
 ## License
 This project is available for use under the MIT License.

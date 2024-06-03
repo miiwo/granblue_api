@@ -1,19 +1,24 @@
 package main
 
 import (
+	"log"
 	"miiwo/skyfarer/backend/models"
 	"miiwo/skyfarer/handler"
 	"miiwo/skyfarer/middleware"
 	"os"
 
+	"github.com/gin-gonic/autotls"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
 
 func main() {
 	// INIT
-	router := gin.Default()
 	godotenv.Load(".env")
+	gin.SetMode(gin.ReleaseMode)
+	router := gin.Default()
+	router.ForwardedByClientIP = true
+	router.SetTrustedProxies([]string{"127.0.0.1", "10.0.0.0/8"})
 	models.ConnectToMariaDB()
 
 	// ROUTES
@@ -25,6 +30,8 @@ func main() {
 		gctx.IndentedJSON(200, gin.H{"message": "pong"})
 	})
 
+	// HTTPS
+	log.Fatal(autotls.Run(router, os.Getenv("CUSTOM_DOMAIN")))
 	// RUN
-	router.Run(os.Getenv("BASE_URL"))
+	//router.Run(os.Getenv("BASE_URL"))
 }
