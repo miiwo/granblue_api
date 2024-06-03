@@ -32,6 +32,4 @@ func main() {
 
 	// HTTPS
 	log.Fatal(autotls.Run(router, os.Getenv("CUSTOM_DOMAIN")))
-	// RUN
-	//router.Run(os.Getenv("BASE_URL"))
 }
