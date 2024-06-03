@@ -1,5 +1,7 @@
 # Skyfarer REST API App
-![](https://img.shields.io/badge/public_API_\@skyfaring--domain\.xyz-offline!-D24939)
+![](https://img.shields.io/badge/public_API_\@skyfaring--domain\.xyz-online!-brightgreen)
+
+[/ For red: D24939 | For green: brightgreen /]: #
 
 ![-banner picture here-](SkyfarerAPIBanner.png)
 
@@ -46,12 +48,14 @@ For usage, go [here](#usage).
 This API is publically hosted at: `skyfaring-domain.xyz`  
 | Is it Up? |
 | :-:       |
-| :x:       | 
+| :white_check_mark:       | 
 
-You can connect via Postman at the endpoint: `http://skyfaring-domain.xyz/v1/weapons`
+[/:white_check_mark: vs. :x: /]: #
+
+You can connect via Postman at the endpoint: `https://skyfaring-domain.xyz/v1/weapons`
 
 Or use cURL on the Command Terminal:  
-Ex. `curl -H "Authorization: Bearer <API_KEY>" http://skyfaring-domain.xyz/v1/weapons?name=phoenix `
+Ex. `curl -H "Authorization: Bearer <API_KEY>" https://skyfaring-domain.xyz/v1/weapons?name=phoenix `
 
 > [!NOTE]
 > I try to keep it up during 9am-5pm EST hours, but it may be down due to cloud hosting cost concerns :(  
