@@ -48,3 +48,12 @@ func GetWeaponsByQuery(filters map[string]interface{}) ([]Weapon, error) {
 
 	return weapons, err
 }
+
+func GetWeaponByID(id string) (Weapon, error) {
+	var weapon Weapon
+	var err error = nil
+
+	err = DB.Preload("Skills").Table("Weapons").Where("name = ?", id).Find(&weapon).Error
+
+	return weapon, err
+}

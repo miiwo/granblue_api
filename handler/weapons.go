@@ -16,8 +16,20 @@ func FetchWeaponsFromDB(gctx *gin.Context) {
 	results, err := models.GetWeaponsByQuery(tempfilters)
 
 	if err != nil {
-		gctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "Server encountered an error"})
+		gctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "Server encountered an error fetch weapons by query."})
 	} else {
 		gctx.IndentedJSON(http.StatusOK, results)
+	}
+}
+
+func FetchWeaponByKeyFromDB(gctx *gin.Context) {
+	name := gctx.Param("name")
+
+	result, err := models.GetWeaponByID(name)
+
+	if err != nil {
+		gctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "Server encountered an error fetching one weapon."})
+	} else {
+		gctx.IndentedJSON(http.StatusOK, result)
 	}
 }
