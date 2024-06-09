@@ -96,13 +96,29 @@ Returns a list of weapons. If there are no skills associated with the weapon, th
 ```
 [
     {
-        "Name": "Sword of Bahamut Coda",
+        "Name": "Abyss Gaze",
         "Element": "dark",
-        "WeaponType": "sword",
+        "WeaponType": "gun",
         "Skills": [
             {
-                "Name": "Concrio Ignis",
-                "Description": "Boost to Humans' and Draphs' ATK and HP"
+                "Name": "Mistfall's Might",
+                "Description": "Medium boost to dark allies' ATK",
+                "BoostType": "MAGNA",
+                "StatAffected": "ATK",
+                "SkillLvlOne": "3.0",
+                "SkillLvlTen": "12.0",
+                "SkillLvlFifteen": "14.5",
+                "SkillLvlTwenty": ""
+            },
+            {
+                "Name": "Mistfall's Restraint",
+                "Description": "Medium boost to dark allies' double attack rate and critical hit rate",
+                "BoostType": "MAGNA",
+                "StatAffected": "DA/CRIT",
+                "SkillLvlOne": "0.8/4.4",
+                "SkillLvlTen": "3.5/8.0",
+                "SkillLvlFifteen": "5.0/10.0",
+                "SkillLvlTwenty": ""
             }
         ]
     },
