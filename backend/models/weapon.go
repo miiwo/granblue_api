@@ -8,11 +8,18 @@ import (
 
 type Weapon struct {
 	// gorm.Model (only used for populating a struct w/ id, createdat, updatedat, deleted at)
-	ID      int    `json:"-" gorm:"primaryKey;"`
-	Name    string `gorm:"unique"`
-	Element string
-	WepType string         `json:"WeaponType"`
-	Skills  []*WeaponSkill `json:"Skills,omitempty" gorm:"many2many:weapon_skills_relationship;"`
+	ID               int    `json:"-" gorm:"primaryKey;"`
+	Name             string `gorm:"unique"`
+	Element          string
+	WepType          string `json:"WeaponType"`
+	WepDesc          string `json:"Description"`
+	CaName           string `json:"OugiName"`
+	CaDesc           string `json:"OugiDesc"`
+	LvlOneAtk        int
+	LvlHundredAtk    int
+	LvlOnefiftyAtk   int
+	LvlTwohundredAtk int
+	Skills           []*WeaponSkill `json:"Skills,omitempty" gorm:"many2many:weapon_skills_relationship;"`
 }
 
 func GetWeaponsByQuery(filters map[string]interface{}) ([]Weapon, error) {
