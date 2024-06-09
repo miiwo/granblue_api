@@ -6,8 +6,8 @@ type WeaponSkill struct {
 	Description         string
 	BoostType           string
 	StatAffected        string
-	SkillPercLvlOne     string
-	SkillPercLvlTen     string
-	SkillPercLvlFifteen string
-	SkillPercLvlTwenty  string
+	SkillPercLvlOne     string `json:"SkillLvlOne"`
+	SkillPercLvlTen     string `json:"SkillLvlTen"`
+	SkillPercLvlFifteen string `json:"SkillLvlFifteen"`
+	SkillPercLvlTwenty  string `json:"SkillLvlTwenty"`
 }
