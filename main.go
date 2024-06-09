@@ -23,7 +23,7 @@ func main() {
 
 	// ROUTES
 	v1 := router.Group("v1", middleware.CorsConfig, middleware.ValidateAPIKey)
-	v1.GET("/weapons/:name")
+	v1.GET("/weapons/:name", handler.FetchWeaponByKeyFromDB)
 	v1.GET("/weapons", handler.FetchWeaponsFromDB)
 
 	// Just to show routes are working without authentication
