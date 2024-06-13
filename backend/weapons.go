@@ -74,18 +74,25 @@ func ValidateAPIKey(key string) bool {
 }
 
 func checkKeys(rawKey string) bool {
-	isValid := true
-	apiKey := os.Getenv("API_KEY")
+	isValid := false
+	badKey := false
+	apiKeys := strings.Split(os.Getenv("API_KEY"), ",")
 
-	if len(apiKey) != len(rawKey) {
-		return false
-	}
-
-	// Goes through all the characters to try and avoid timing attack
-	for i := range apiKey {
-		if rawKey[i] != apiKey[i] {
-			isValid = false
+	for _, apiKey := range apiKeys {
+		// Go through the all the allowed keys and avoid timing attacks
+		for i := range apiKey {
+			if rawKey[i] != apiKey[i] {
+				badKey = true
+			}
 		}
+
+		if badKey {
+			isValid = isValid || false
+		} else if !isValid {
+			isValid = true
+		}
+		badKey = false
+
 	}
 
 	return isValid
