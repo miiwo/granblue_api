@@ -1,13 +1,11 @@
 package main
 
 import (
-	"log"
 	"miiwo/skyfarer/backend/models"
 	"miiwo/skyfarer/handler"
 	"miiwo/skyfarer/middleware"
 	"os"
 
-	"github.com/gin-gonic/autotls"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -31,6 +29,8 @@ func main() {
 		gctx.IndentedJSON(200, gin.H{"message": "pong"})
 	})
 
+	// RUN
+	router.Run(os.Getenv("BASE_URL"))
 	// HTTPS
-	log.Fatal(autotls.Run(router, os.Getenv("CUSTOM_DOMAIN")))
+	//log.Fatal(autotls.Run(router, os.Getenv("CUSTOM_DOMAIN")))
 }
