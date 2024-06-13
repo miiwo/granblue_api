@@ -1,5 +1,5 @@
 # Skyfarer REST API App
-![](https://img.shields.io/badge/public_API_\@skyfaring--domain\.xyz-online!-brightgreen)
+![](https://img.shields.io/badge/public_API_\@api.skyfaring--domain\.xyz-online!-brightgreen)
 
 [/ For red: D24939 | For green: brightgreen /]: #
 
@@ -45,17 +45,17 @@ For usage, go [here](#usage).
 
 
 ## Usage
-This API is publically hosted at: `skyfaring-domain.xyz`  
+This API is publically hosted at: `api.skyfaring-domain.xyz`  
 | Is it Up? |
 | :-:       |
 | :white_check_mark:       | 
 
 [/:white_check_mark: vs. :x: /]: #
 
-You can connect via Postman at the endpoint: `https://skyfaring-domain.xyz/v1/weapons`
+You can connect via Postman at the endpoint: `https://api.skyfaring-domain.xyz/v1/weapons`
 
 Or use cURL on the Command Terminal:  
-Ex. `curl -H "Authorization: Bearer <API_KEY>" https://skyfaring-domain.xyz/v1/weapons?name=phoenix `
+Ex. `curl -H "Authorization: Bearer <API_KEY>" https://api.skyfaring-domain.xyz/v1/weapons?name=phoenix `
 
 > [!NOTE]
 > I try to keep it up during 9am-5pm EST hours, but it may be down due to cloud hosting cost concerns :(  
@@ -76,7 +76,8 @@ Ex. `curl -H "Authorization: Bearer <API_KEY>" http://<BASEURL>/v1/weapons?name=
 
 | HTTP Verbs | Endpoints | Action |
 | --- | --- | --- |
-| GET | /v1/weapons | To get information on a weapon                        |
+| GET | /v1/weapons | To get information on a set of weapons                |
+| GET | /v1/weapons/:name | To get information on a particular weapon       |
 | GET | /ping       | Gives you pong back without needing to authenticate   |
 
 [| GET | /v1/characters | To get information on a character |]: #
@@ -99,6 +100,13 @@ Returns a list of weapons. If there are no skills associated with the weapon, th
         "Name": "Abyss Gaze",
         "Element": "dark",
         "WeaponType": "gun",
+        "Description": "Within the void, darkness reigns supreme. A torrent of cataclysmic power manifests as a gun, casting a shadow across the skies. Where there is light there is shadow, turning to darkness and dissolving into nothingness.",
+        "OugiName": "Quadra",
+        "OugiDesc": "Massive Dark damage to a foe. Inflict Blinded and 10% Debuff Res. Down",
+        "LvlOneAtk": 424,
+        "LvlHundredAtk": 2518,
+        "LvlOnefiftyAtk": 2940,
+        "LvlTwohundredAtk": 0,
         "Skills": [
             {
                 "Name": "Mistfall's Might",
