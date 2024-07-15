@@ -2,6 +2,7 @@ package models
 
 import (
 	"encoding/base64"
+	"log"
 	"os"
 	"strconv"
 
@@ -92,6 +93,7 @@ func fetchImageInternal(weapon *Weapon) error {
 	//imageFile, err := os.ReadFile(os.Getenv("IMAGE_DIR") + weaponImageName)
 	imageFile, err := os.ReadFile(os.Getenv("IMAGE_DIR") + weapon.PictureSmall)
 	if err != nil {
+		log.Print(err.Error())
 		return err
 	}
 
