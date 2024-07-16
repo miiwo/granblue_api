@@ -52,7 +52,7 @@ func GetWeaponsByQuery(filters map[string]interface{}) ([]Weapon, error) {
 		dbctx = dbctx.Where("ca_desc LIKE ?", "%"+filters["ca_desc"].(string)+"%")
 		delete(filters, "ca_desc")
 	} else if filters["skill"] != nil {
-		dbctx = DB.Joins("Skills", "name LIKE ? OR description LIKE ?", "%"+filters["skill"].(string)+"%", "%"+filters["skill"].(string)+"%")
+		dbctx = DB.Preload("Skills", "name LIKE ? OR description LIKE ?", "%"+filters["skill"].(string)+"%", "%"+filters["skill"].(string)+"%")
 		delete(filters, "skill")
 	}
 
