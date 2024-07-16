@@ -44,10 +44,16 @@ func GetWeaponsByQuery(filters map[string]interface{}) ([]Weapon, error) {
 		return weapons, err
 	}
 
-	// Do partial match on name if present
+	// Do partial match on primary match: name,ougi_desc,weapon_skill if present
 	if filters["name"] != nil {
 		dbctx = dbctx.Where("name LIKE ?", "%"+filters["name"].(string)+"%")
 		delete(filters, "name")
+	} else if filters["ougi_desc"] != nil {
+		dbctx = dbctx.Where("ca_desc LIKE ?", "%"+filters["ougi_desc"].(string)+"%")
+		delete(filters, "ca_desc")
+	} else if filters["skill"] != nil {
+		dbctx = DB.Joins("Skills", "name LIKE ? OR description LIKE ?", "%"+filters["skill"].(string)+"%", "%"+filters["skill"].(string)+"%")
+		delete(filters, "skill")
 	}
 
 	// DB Query
@@ -56,8 +62,8 @@ func GetWeaponsByQuery(filters map[string]interface{}) ([]Weapon, error) {
 		return weapons, err
 	}
 
-	for _, weapon := range weapons {
-		err = fetchImageInternal(&weapon)
+	for i := range weapons {
+		err = fetchImageInternal(&weapons[i])
 		if err != nil {
 			return weapons, err
 		}
@@ -84,13 +90,11 @@ func fetchImageInternal(weapon *Weapon) error {
 	var err error = nil
 
 	// Get images based on path
-	//splitImagePath := strings.Split(weapon.PictureSmall, "/")
-	//if len(splitImagePath) == 0 {
-	// I don't have all the images so return without doing anything
-	//	return nil
-	//}
-	//weaponImageName := splitImagePath[len(splitImagePath)-1]
-	//imageFile, err := os.ReadFile(os.Getenv("IMAGE_DIR") + weaponImageName)
+	if weapon.PictureSmall == "" {
+		// I don't have all the images so return without doing anything
+		return nil
+	}
+
 	imageFile, err := os.ReadFile(os.Getenv("IMAGE_DIR") + weapon.PictureSmall)
 	if err != nil {
 		log.Print(err.Error())
@@ -98,7 +102,7 @@ func fetchImageInternal(weapon *Weapon) error {
 	}
 
 	// Convert to base64
-	var base64Image string = base64.RawStdEncoding.EncodeToString(imageFile)
+	var base64Image string = base64.StdEncoding.EncodeToString(imageFile)
 
 	// Attach to returnable result
 	weapon.Image64 = base64Image
