@@ -6,13 +6,13 @@
 ![-banner picture here-](SkyfarerAPIBanner.png)
 
 ## Introduction
-This API grabs item info for the game "Granblue Fantasy" in a RESTful manner. This will allow for easier searching of certain properties on items and their magnitude. Planned usage to use this in conjecture with a website to search the collection of items. This app is written in Golang.
+This API grabs item info for the game "Granblue Fantasy" in a RESTful manner. This will allow for easier searching of certain properties on items and their strength. Planned usage to use this in conjecture with a website to search the collection of items easily. This app is written in Golang.
 
 For usage, go [here](#usage).
 
 ## Features
-- Authentication via an API key
-- Find GBF weapons with filters based on weapon skills to help with grid building
+- Authentication+Authorization via an API key
+- Find GBF weapons with filters based on weapon skills, key effects, or type to help with grid building
 - Publically accessable REST API that can be used by other developers without needing to source their own data
 
 ## Setup on your own machine
@@ -52,9 +52,11 @@ This API is publically hosted at: `api.skyfaring-domain.xyz`
 
 [/:white_check_mark: vs. :x: /]: #
 
-You can connect via Postman at the endpoint: `https://api.skyfaring-domain.xyz/v1/weapons`
+You can connect via Postman at the endpoint: `https://api.skyfaring-domain.xyz/ping`
 
-Or use cURL on the Command Terminal:  
+<u>**Other endpoints require an API key to access.**</u> Please open an issue on this project to request an API key.
+
+Alternatively use cURL on the Command Terminal:  
 Ex. `curl -H "Authorization: Bearer <API_KEY>" https://api.skyfaring-domain.xyz/v1/weapons?name=phoenix `
 
 > [!NOTE]
@@ -77,7 +79,7 @@ Ex. `curl -H "Authorization: Bearer <API_KEY>" http://<BASEURL>/v1/weapons?name=
 | HTTP Verbs | Endpoints | Action |
 | --- | --- | --- |
 | GET | /v1/weapons | To get information on a set of weapons                |
-| GET | /v1/weapons/:name | To get information on a particular weapon       |
+| GET | /v1/weapons/**:name** | To get information on a particular weapon       |
 | GET | /ping       | Gives you pong back without needing to authenticate   |
 
 [| GET | /v1/characters | To get information on a character |]: #
@@ -91,6 +93,10 @@ Fields to query by:
 - name
 - element
 - wep_type
+- ca_desc
+- skill
+
+Note that: *name, ca_desc, and skill* are considered primary filters and only one will be applied when searching. The other fields will be unaffected.
 
 ##### Response
 Returns a list of weapons. If there are no skills associated with the weapon, there will be no field for it in the response JSON.
@@ -128,7 +134,8 @@ Returns a list of weapons. If there are no skills associated with the weapon, th
                 "SkillLvlFifteen": "5.0/10.0",
                 "SkillLvlTwenty": ""
             }
-        ]
+        ],
+        "Image64": ""
     },
     ...
 ]
