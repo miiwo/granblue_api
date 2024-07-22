@@ -13,7 +13,7 @@ For usage, go [here](#usage).
 ## Features
 - Authentication+Authorization via an API key
 - Find GBF weapons with filters based on weapon skills, key effects, or type to help with grid building
-- Publically accessable REST API that can be used by other developers without needing to source their own data
+- Publically accessable REST API secured with HTTPS that can be used by other developers without needing to source their own data
 
 ## Setup on your own machine
 #### 1. Grab the source code
@@ -45,7 +45,7 @@ For usage, go [here](#usage).
 
 
 ## Usage
-This API is publically hosted at: `api.skyfaring-domain.xyz`  
+This API is publically hosted at: `https://api.skyfaring-domain.xyz`  
 | Is it Up? |
 | :-:       |
 | :white_check_mark:       | 
@@ -56,11 +56,15 @@ You can connect via Postman at the endpoint: `https://api.skyfaring-domain.xyz/p
 
 <u>**Other endpoints require an API key to access.**</u> Please open an issue on this project to request an API key.
 
+Ex (Weapon endpoint with name filter on "Abyss") `https://api./skyfaring-domain.xyz/v1/weapons?name=Abyss`
+
 Alternatively use cURL on the Command Terminal:  
-Ex. `curl -H "Authorization: Bearer <API_KEY>" https://api.skyfaring-domain.xyz/v1/weapons?name=phoenix `
+Ex2. `curl -H "Authorization: Bearer <API_KEY>" https://api.skyfaring-domain.xyz/v1/weapons?name=phoenix`
+
+
 
 > [!NOTE]
-> I try to keep it up during 9am-5pm EST hours, but it may be down due to cloud hosting cost concerns :(  
+> At minimum, I try to keep it up during <u>9am-5pm EST</u> hours, but it may be down in other hours due to cloud hosting cost concerns / maintenance.
 > For API Key access, please make an issue on the repository requesting access.  
 ---
 
@@ -145,7 +149,7 @@ Returns a list of weapons. If there are no skills associated with the weapon, th
 - [Golang]() | The programming language used to write the REST API app. Also known as Go
 - [Gin]() | A Golang web framework featuring high performance and productivity
 - [GORM]() | A ORM framework that simplifies modelling the database schema within the development of the app
-- [MariaDB]() | A free open-source SQL database
+- [MariaDB]() | A free and open-source SQL database
 - [Google Cloud Platform]() | A cloud provider used to publically host the REST API app. Specifically using Compute Engine which is not serverless
 
 ## License
