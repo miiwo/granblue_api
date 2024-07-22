@@ -23,6 +23,7 @@ type Weapon struct {
 	LvlOnefiftyAtk   int
 	LvlTwohundredAtk int
 	Skills           []*WeaponSkill `json:"Skills,omitempty" gorm:"many2many:weapon_skills_relationship;"`
+	Awakening        []*Awakening   `json:"Awakening,omitempty" gorm:"many2many:weapon_awakening_relationship;"`
 	Image64          string         `gorm:"-"` // Image field to send to client, does not exist in DB. Base64
 	PictureSmall     string         `json:"-"` // Don't send image link to client, only for internal use
 }
