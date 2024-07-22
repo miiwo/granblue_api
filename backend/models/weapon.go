@@ -32,7 +32,7 @@ func GetWeaponsByQuery(filters map[string]interface{}) ([]Weapon, error) {
 	var weapons []Weapon
 	var pagination int = 0
 	var err error = nil
-	var dbctx *gorm.DB = DB.Preload("Skills").Table("Weapons")
+	var dbctx *gorm.DB = DB.Preload("Skills").Preload("Awakening").Table("Weapons")
 
 	// Remove pagination from filters if it exists
 	if filters["pagination"] != nil {
@@ -77,7 +77,7 @@ func GetWeaponByID(id string) (Weapon, error) {
 	var weapon Weapon
 	var err error = nil
 
-	err = DB.Preload("Skills").Table("Weapons").Where("name = ?", id).Find(&weapon).Error
+	err = DB.Preload("Skills").Preload("Awakening").Table("Weapons").Where("name = ?", id).Find(&weapon).Error
 	if err != nil {
 		return weapon, err
 	}
