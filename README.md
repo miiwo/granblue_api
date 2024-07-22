@@ -56,7 +56,7 @@ You can connect via Postman at the endpoint: `https://api.skyfaring-domain.xyz/p
 
 <u>**Other endpoints require an API key to access.**</u> Please open an issue on this project to request an API key.
 
-Ex (Weapon endpoint with name filter on "Abyss") `https://api./skyfaring-domain.xyz/v1/weapons?name=Abyss`
+Ex (Weapon endpoint with name filter on "Abyss") `https://api.skyfaring-domain.xyz/v1/weapons?name=Abyss`
 
 Alternatively use cURL on the Command Terminal:  
 Ex2. `curl -H "Authorization: Bearer <API_KEY>" https://api.skyfaring-domain.xyz/v1/weapons?name=phoenix`
