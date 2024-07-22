@@ -139,7 +139,14 @@ Returns a list of weapons. If there are no skills associated with the weapon, th
                 "SkillLvlTwenty": ""
             }
         ],
-        "Image64": ""
+        "Image64": "",
+        "Awakening": [
+            {
+                "Name": "Attack",
+                "StatAffected": "NORM ATK/EX ATK/ELE ATK",
+                "Strength": "35/10/15"
+            }
+        ]
     },
     ...
 ]
