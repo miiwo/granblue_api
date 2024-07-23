@@ -54,7 +54,7 @@ This API is publically hosted at: `https://api.skyfaring-domain.xyz`
 
 You can connect via Postman at the endpoint: `https://api.skyfaring-domain.xyz/ping`
 
-<u>**Other endpoints require an API key to access.**</u> Please open an issue on this project to request an API key.
+**<ins>Other endpoints require an API key to access.</ins>** Please open an issue on this project to request an API key.
 
 **Alternatively use cURL on the Command Terminal**  
 Ex. `curl -H "Authorization: Bearer <API_KEY>" https://api.skyfaring-domain.xyz/v1/weapons?name=phoenix`
