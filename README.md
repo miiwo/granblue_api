@@ -67,6 +67,7 @@ Ex2. `https://api.skyfaring-domain.xyz/v1/weapons?name=Abyss`
 
 > [!NOTE]
 > At minimum, I try to keep it up during <u>9am-5pm EST</u> hours, but it may be down in other hours due to cloud hosting cost concerns / maintenance.  
+> 
 > For API Key access, please make an issue on the repository requesting access.  
 ---
 
@@ -103,10 +104,10 @@ Fields to query by:
 - skill
 
 > [!NOTE] 
-> *name, ca_desc, skill* are considered primary filters and only the first one will be applied when searching if multiple appear in the URI.
+> *name, ca_desc, skill* are considered *primary filters* and only the first one will be applied when searching if multiple appear in the URI.
 
 ##### Response
-Returns a list of weapons. If there are no skills associated with the weapon, there will be no field for it in the response JSON.
+Returns a list of weapons. If there are no skills or awakening associated with the weapon, there will be no field for it in the response JSON.
 ```
 [
     {
