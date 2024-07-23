@@ -6,13 +6,13 @@
 ![-banner picture here-](SkyfarerAPIBanner.png)
 
 ## Introduction
-This API grabs item info for the game "Granblue Fantasy" in a RESTful manner. This will allow for easier searching of certain properties on items and their strength. Planned usage to use this in conjecture with a website to search the collection of items easily. This app is written in Golang.
+This API grabs item info for the game "Granblue Fantasy" in a RESTful manner. This will allow for easier searching of certain properties on items and their strength. Planned usage to use this in conjecture with a [website](https://github.com/miiwo/granblue_front) to search the collection of items easily. This app is written in Golang.
 
 For usage, go [here](#usage).
 
 ## Features
-- Authentication+Authorization via an API key
-- Find GBF weapons with filters based on weapon skills, key effects, or type to help with grid building
+- Authentication + Authorization via an API key
+- Search Granblue Fantasy weapons with filters based on weapon skills, key effects, or types to help with grid building
 - Publically accessable REST API secured with HTTPS that can be used by other developers without needing to source their own data
 
 ## Setup on your own machine
@@ -31,7 +31,7 @@ For usage, go [here](#usage).
 
 - Make sure you have `go` (version 1.22.3+) installed on your machine. *(Check by typing `go version` into the Command Terminal)*  
 - Run `go build` in the Command Terminal to grab all the dependencies and to build the app.  
-- Make a `.env` with the following variables. See `.env.sample` for assistance.
+- Make a `.env` file with the following variables. *See `.env.sample` for assistance.*
 
 | Key       | Notes                                                                                 |
 | ---       | ---                                                                                   |
@@ -56,15 +56,17 @@ You can connect via Postman at the endpoint: `https://api.skyfaring-domain.xyz/p
 
 <u>**Other endpoints require an API key to access.**</u> Please open an issue on this project to request an API key.
 
-Ex (Weapon endpoint with name filter on "Abyss") `https://api.skyfaring-domain.xyz/v1/weapons?name=Abyss`
+**Alternatively use cURL on the Command Terminal**  
+Ex. `curl -H "Authorization: Bearer <API_KEY>" https://api.skyfaring-domain.xyz/v1/weapons?name=phoenix`
 
-Alternatively use cURL on the Command Terminal:  
-Ex2. `curl -H "Authorization: Bearer <API_KEY>" https://api.skyfaring-domain.xyz/v1/weapons?name=phoenix`
+**Postman**  
+Ex2. `https://api.skyfaring-domain.xyz/v1/weapons?name=Abyss`  
+*Go to Authorization Tab and set a "Bearer Token" with an authorized API key*
 
 
 
 > [!NOTE]
-> At minimum, I try to keep it up during <u>9am-5pm EST</u> hours, but it may be down in other hours due to cloud hosting cost concerns / maintenance.
+> At minimum, I try to keep it up during <u>9am-5pm EST</u> hours, but it may be down in other hours due to cloud hosting cost concerns / maintenance.  
 > For API Key access, please make an issue on the repository requesting access.  
 ---
 
@@ -100,7 +102,8 @@ Fields to query by:
 - ca_desc
 - skill
 
-Note that: *name, ca_desc, and skill* are considered primary filters and only one will be applied when searching. The other fields will be unaffected.
+> [!NOTE] 
+> *name, ca_desc, skill* are considered primary filters and only the first one will be applied when searching if multiple appear in the URI.
 
 ##### Response
 Returns a list of weapons. If there are no skills associated with the weapon, there will be no field for it in the response JSON.
@@ -155,7 +158,7 @@ Returns a list of weapons. If there are no skills associated with the weapon, th
 ## Technologies Used
 - [Golang]() | The programming language used to write the REST API app. Also known as Go
 - [Gin]() | A Golang web framework featuring high performance and productivity
-- [GORM]() | A ORM framework that simplifies modelling the database schema within the development of the app
+- [GORM]() | A ORM framework that simplifies modelling the database schema within the app development
 - [MariaDB]() | A free and open-source SQL database
 - [Google Cloud Platform]() | A cloud provider used to publically host the REST API app. Specifically using Compute Engine which is not serverless
 
